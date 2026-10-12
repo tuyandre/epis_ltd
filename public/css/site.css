@@ -219,8 +219,15 @@ footer a:hover{color:var(--white)}
 .hero .wrap{padding-top:56px;padding-bottom:56px}
 .hero h1{font-size:clamp(2.2rem,5vw,3.8rem);max-width:16ch;margin-bottom:18px}
 .hero p{font-size:1.05rem;margin-bottom:26px}
-@media (max-width:520px){.hero{min-height:420px}}
-@media (min-width:861px){.hero{aspect-ratio:1564/872;min-height:460px;max-height:720px}.hero-art{object-fit:cover}}
+/* Responsive banner: always full width, height scales with viewport */
+.hero{width:100%;aspect-ratio:auto;max-height:none;min-height:clamp(420px,62vh,820px)}
+.hero-art{width:100%;height:100%;object-fit:cover}
+.hero .wrap{padding-top:clamp(40px,8vh,110px);padding-bottom:clamp(40px,8vh,110px)}
+.hero h1{font-size:clamp(2.1rem,5.2vw,4.6rem)}
+.hero p{font-size:clamp(1rem,1.4vw,1.3rem)}
+@media (min-width:1600px){.hero{min-height:clamp(640px,56vh,900px)}.hero h1{max-width:14ch}}
+@media (max-width:860px){.hero{min-height:480px}.hero-art{object-position:62% center}.hero::after{background:linear-gradient(180deg,rgba(22,21,63,.6) 0%,rgba(22,21,63,.78) 100%)}}
+@media (max-width:520px){.hero{min-height:440px}.hero-actions .btn{flex:1 1 100%;text-align:center}}
 .project .photo-bg,.about-visual img{object-position:center}
 
 /* ---------- Design pass from the company profile PDF ---------- */
@@ -256,3 +263,63 @@ footer a:hover{color:var(--white)}
 /* Team portraits: edge to edge, as in the profile */
 .member .photo{margin:auto -18px 0;aspect-ratio:490/520;background:none;overflow:hidden}
 .member .photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+/* ---------- Full-page responsive pass ---------- */
+html{-webkit-text-size-adjust:100%}
+body{overflow-x:hidden;font-size:clamp(16px,.35vw + 15px,19px)}
+img,svg,video{max-width:100%}
+.wrap{padding:0 clamp(16px,4vw,32px)}
+section{padding:clamp(56px,8vw,112px) 0}
+@media (min-width:1500px){:root{--wrap:1360px}}
+@media (min-width:2000px){:root{--wrap:1560px}}
+.top .wrap{gap:16px}
+nav ul{gap:clamp(14px,2vw,28px)}
+.mvv-card h3{font-size:clamp(2rem,4vw,2.6rem)}
+.project h3{font-size:clamp(1.3rem,2.4vw,1.6rem)}
+.team-grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
+.client-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.footer-logo{max-width:100%}
+.crow{padding:16px clamp(16px,3vw,26px)}
+.crow b{overflow-wrap:anywhere}
+
+@media (max-width:1100px) and (min-width:861px){
+  nav a{font-size:.85rem}
+  .nav-cta{padding:8px 12px;font-size:.8rem}
+  .about .wrap{gap:40px}
+  .contact .wrap{gap:40px}
+}
+@media (max-width:1000px) and (min-width:601px){
+  .mvv-grid{grid-template-columns:repeat(2,1fr)}
+  .mvv-card.values{grid-column:span 2}
+  .project-grid{grid-template-columns:repeat(2,1fr)}
+  .project.wide,.project.mid,.project.narrow{grid-column:span 1}
+  .project.wide:first-child{grid-column:span 2}
+}
+@media (max-width:860px){
+  nav{max-height:calc(100vh - 76px);overflow-y:auto}
+  .nav-cta{display:inline-block;margin-left:auto;padding:8px 12px;font-size:.8rem}
+  .services-head{padding:48px 16px 32px}
+  .service .ico{width:76px;height:76px}
+  .about-visual .badge{padding:14px 18px;font-size:1rem}
+}
+@media (max-width:600px){
+  .project-grid{grid-template-columns:1fr}
+  .project.wide,.project.mid,.project.narrow{grid-column:span 1}
+  .project{min-height:300px}
+  .project .info{padding:20px}
+  .mvv-card{padding:32px 24px}
+  .gallery-grid{columns:2 140px;column-gap:10px}
+  .gallery-grid figure{margin-bottom:10px}
+  .gallery-grid figcaption{font-size:.78rem;padding:20px 10px 8px}
+  .services-band::before{height:56px;top:-28px}
+  footer .wrap{flex-direction:column}
+  footer ul{gap:14px 20px}
+  .crow{clip-path:none}
+}
+@media (max-width:400px){
+  .logo-img{height:34px}
+  .nav-cta{padding:7px 9px;font-size:.72rem}
+  .btn{padding:12px 18px}
+  form{padding:22px 16px}
+  .team-grid{grid-template-columns:1fr 1fr;gap:12px}
+}
